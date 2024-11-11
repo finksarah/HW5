@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Sarah Fink / 001
  *
  *   This java file contains the problem solutions of isSubSet, findKthLargest,
  *   and sort2Arrays methods. You should utilize the Java Collection Framework for
@@ -32,9 +32,19 @@ class ProblemSolutions {
 
     public boolean isSubset(int list1[], int list2[]) {
 
-        // ADD YOU CODE HERE -- DON'T FORGET TO ADD YOR NAME AT TOP OF FILE
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : list1) {
+            set.add(num);
+        }
 
-        return false;
+        // check if all elements in list 2 are in list 1
+        for (int num : list2) {
+            if (!set.contains(num)) {
+                return false; // if any elements aren't in list 1 return false
+            }
+        }
+
+        return true;
     }
 
 
@@ -53,9 +63,10 @@ class ProblemSolutions {
 
     public int findKthLargest(int[] array, int k) {
 
-        // ADD YOUR CODE HERE
+        Arrays.sort(array);
 
-        return 0;
+        // largest element is the last element in the array
+        return array[array.length - k];
     }
 
 
@@ -74,9 +85,13 @@ class ProblemSolutions {
 
     public int[] sort2Arrays(int[] array1, int[] array2) {
 
-        // ADD YOU CODE HERE
+        int[] arrayNew = new int[array1.length + array2.length];
 
-        return null;
+        System.arraycopy(array1, 0, arrayNew, 0, array1.length);
+        System.arraycopy(array2, 0, arrayNew, array1.length, array2.length);
+        Arrays.sort(arrayNew);
+
+        return arrayNew;
     }
 
 }
